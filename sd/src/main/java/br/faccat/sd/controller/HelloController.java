@@ -35,7 +35,7 @@ public class HelloController {
 
         StringBuilder sb = new StringBuilder();
 
-        if (nome == null || "".equals(nome) ) {
+        if (nome == null || "".equals(nome)) {
             sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Hello World");
         } else {
             sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Seja bem vindo ").append(nome);
@@ -45,9 +45,13 @@ public class HelloController {
             InetAddress inetAddress = InetAddress.getLocalHost();
         } catch (UnknownHostException ex) {
             ex.printStackTrace();
+                System.out.println("============");
+            for (StackTraceElement stackTraceElement : ex.getStackTrace()) {
+                System.out.println(stackTraceElement.toString());
+
+            }
         }
-               
-        
+
         return sb.toString();
     }
 }
