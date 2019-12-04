@@ -34,8 +34,7 @@ public class HelloController {
 
         InetAddress inetAddress = InetAddress.getLocalHost();
 
-        sb.append("&nbsp;IP Address:- ").append(inetAddress.getHostAddress());
-        sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Host Name:- ").append(inetAddress.getHostName());
+        sb.append("&nbsp;Docker Address:- ").append(inetAddress.getHostAddress());
         if (nome == null || "".equals(nome) ) {
             sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Hello World");
         } else {
