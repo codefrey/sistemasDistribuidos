@@ -8,6 +8,8 @@ package br.faccat.sd.controller;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,20 +31,23 @@ public class HelloController {
     public @ResponseBody
     String getHello(@RequestParam(defaultValue = "", required = false) String nome,
             HttpServletRequest req,
-            HttpServletResponse res) throws UnknownHostException, IOException {
+            HttpServletResponse res) {
 
         StringBuilder sb = new StringBuilder();
 
-        //InetAddress inetAddress = InetAddress.getLocalHost();
-        System.out.println("AQIII");
-       // sb.append("&nbsp;Docker Address:- ").append(inetAddress.getHostAddress());
-        sb.append("&nbsp;Docker Address:- ").append(Runtime.getRuntime().exec("hostname"));
         if (nome == null || "".equals(nome) ) {
             sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Hello World");
         } else {
             sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Seja bem vindo ").append(nome);
         }
 
+        try {
+            InetAddress inetAddress = InetAddress.getLocalHost();
+        } catch (UnknownHostException ex) {
+            ex.printStackTrace();
+        }
+               
+        
         return sb.toString();
     }
 }
