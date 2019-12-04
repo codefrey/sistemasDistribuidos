@@ -43,6 +43,10 @@ public class HelloController {
 
         try {
             InetAddress inetAddress = InetAddress.getLocalHost();
+
+            sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;IP Address:- ").append(inetAddress.getHostAddress());
+            sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Host Name:- ").append(inetAddress.getHostName());
+
         } catch (UnknownHostException ex) {
             System.out.println(ex.getMessage());
             sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Docker ").append(ex.getMessage().substring(0, 12));
