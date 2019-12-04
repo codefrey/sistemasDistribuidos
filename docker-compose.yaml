@@ -1,12 +1,16 @@
-version: '2'
+version: '1'
 
 services:
-    reverseproxy:
+    nginx:
         image: frey/nginx-reverse-proxy
+        replicas: 2
         ports:
-            - 80:80
+            - 8081:8081
         restart: always
 
-    test:
+    sd:
+        replicas: 5
+        depends_on:
+          - nginx
         image: frey/java-sd
         restart: always
