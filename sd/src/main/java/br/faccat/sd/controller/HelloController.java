@@ -45,7 +45,7 @@ public class HelloController {
             InetAddress inetAddress = InetAddress.getLocalHost();
         } catch (UnknownHostException ex) {
             System.out.println(ex.getMessage());
-            System.out.println(ex.getStackTrace()[0].toString());
+            sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Docker ").append(ex.getMessage().substring(0, 12));
         }
 
         return sb.toString();
