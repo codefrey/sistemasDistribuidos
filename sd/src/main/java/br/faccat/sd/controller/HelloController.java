@@ -44,12 +44,7 @@ public class HelloController {
         try {
             InetAddress inetAddress = InetAddress.getLocalHost();
         } catch (UnknownHostException ex) {
-            ex.printStackTrace();
-                System.out.println("============");
-            for (StackTraceElement stackTraceElement : ex.getStackTrace()) {
-                System.out.println(stackTraceElement.toString());
-
-            }
+                System.out.println(ex.getStackTrace()[0].toString());
         }
 
         return sb.toString();
