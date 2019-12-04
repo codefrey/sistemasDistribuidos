@@ -32,9 +32,10 @@ public class HelloController {
 
         StringBuilder sb = new StringBuilder();
 
-        InetAddress inetAddress = InetAddress.getLocalHost();
+        //InetAddress inetAddress = InetAddress.getLocalHost();
 
-        sb.append("&nbsp;Docker Address:- ").append(inetAddress.getHostAddress());
+       // sb.append("&nbsp;Docker Address:- ").append(inetAddress.getHostAddress());
+        sb.append("&nbsp;Docker Address:- ").append(Runtime.getRuntime().exec("hostname"));
         if (nome == null || "".equals(nome) ) {
             sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Hello World");
         } else {
