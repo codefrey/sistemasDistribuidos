@@ -44,7 +44,8 @@ public class HelloController {
         try {
             InetAddress inetAddress = InetAddress.getLocalHost();
         } catch (UnknownHostException ex) {
-                System.out.println(ex.getStackTrace()[0].toString());
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getStackTrace()[0].toString());
         }
 
         return sb.toString();
