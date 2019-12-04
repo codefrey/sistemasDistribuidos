@@ -5,6 +5,7 @@
  */
 package br.faccat.sd.controller;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import javax.servlet.http.HttpServletRequest;
@@ -28,12 +29,12 @@ public class HelloController {
     public @ResponseBody
     String getHello(@RequestParam(defaultValue = "", required = false) String nome,
             HttpServletRequest req,
-            HttpServletResponse res) throws UnknownHostException {
+            HttpServletResponse res) throws UnknownHostException, IOException {
 
         StringBuilder sb = new StringBuilder();
 
         //InetAddress inetAddress = InetAddress.getLocalHost();
-        System.out.printlb("AQIII")
+        System.out.println("AQIII");
        // sb.append("&nbsp;Docker Address:- ").append(inetAddress.getHostAddress());
         sb.append("&nbsp;Docker Address:- ").append(Runtime.getRuntime().exec("hostname"));
         if (nome == null || "".equals(nome) ) {
