@@ -13,4 +13,4 @@ services:
         ports:
             - 8080:8080
         image: frey/java-sd
-        restart: always
+        restart: always 
