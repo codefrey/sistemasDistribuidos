@@ -3,13 +3,11 @@ version: '1'
 services:
     nginx:
         image: frey/nginx-reverse-proxy
-        replicas: 2
         ports:
             - 8081:8081
         restart: always
 
-    sd:
-        replicas: 5
+    java-sd:
         depends_on:
           - nginx
         image: frey/java-sd
