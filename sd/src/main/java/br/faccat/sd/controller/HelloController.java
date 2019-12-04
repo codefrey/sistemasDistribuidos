@@ -33,7 +33,7 @@ public class HelloController {
         StringBuilder sb = new StringBuilder();
 
         //InetAddress inetAddress = InetAddress.getLocalHost();
-
+        System.out.printlb("AQIII")
        // sb.append("&nbsp;Docker Address:- ").append(inetAddress.getHostAddress());
         sb.append("&nbsp;Docker Address:- ").append(Runtime.getRuntime().exec("hostname"));
         if (nome == null || "".equals(nome) ) {
