@@ -5,6 +5,7 @@
  */
 package br.faccat.sd.controller;
 
+import br.faccat.sd.orm.Mensagem;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -29,29 +30,28 @@ public class HelloController {
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
-    String getHello(@RequestParam(defaultValue = "", required = false) String nome,
+    Mensagem getHello(@RequestParam(defaultValue = "", required = false) String nome,
             HttpServletRequest req,
             HttpServletResponse res) {
 
-        StringBuilder sb = new StringBuilder();
+        Mensagem m = new Mensagem();
 
         if (nome == null || "".equals(nome)) {
-            sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Hello World");
+            m.setMensagem("Hello World");
         } else {
-            sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Seja bem vindo ").append(nome);
+            m.setMensagem("Seja bem vindo " + nome);
         }
 
         try {
             InetAddress inetAddress = InetAddress.getLocalHost();
 
-            sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;IP Address:- ").append(inetAddress.getHostAddress());
-            sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Host Name:- ").append(inetAddress.getHostName());
+            m.setIp(inetAddress.getHostAddress());
+            m.setHost(inetAddress.getHostName());
 
         } catch (UnknownHostException ex) {
-            System.out.println(ex.getMessage());
-            sb.append("&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Docker ").append(ex.getMessage().substring(0, 12));
+            m.setHost(ex.getMessage().substring(0, 12));
         }
 
-        return sb.toString();
+        return m;
     }
 }
